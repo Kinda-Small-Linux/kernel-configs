@@ -10,6 +10,15 @@ jobs:
           cd linux-5.15.16
           cp /mnt/wrk_files/kernel/5.15.16/config/active .config
           make -j8
+  weigh-and-archive-kernel:
+    runs-on: self-hosted
+    steps:
+      - run: ll -h /tmp/wrk/kernel-configs/kernel-configs/linux-5.15.16/arch/x86/boot/compressed/vmlinux
+      - run: cp /tmp/wrk/kernel-configs/kernel-configs/linux-5.15.16/arch/x86/boot/compressed/vmlinux /mnt/wrk_files/kernel/5.15.16/archive/vmlinux_$(date +"%m-%d-%Y_%H.%M.%S")
+  cleanup:
+    runs-on: self-hosted
+    steps:
+      - run: rm -rf /tmp/wrk/kernel-configs/*
       
       
       
