@@ -1,0 +1,16 @@
+name: build-kernel
+on:
+  push:
+jobs:
+  build-kernel:
+    runs-on: self-hosted
+    steps:
+      - run: |
+          curl https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.15.16.tar.xz | tar -xJ
+          cd linux-5.15.16
+          cp /mnt/wrk_files/kernel/5.15.16/config/active .config
+          make -j8
+      
+      
+      
+ 
