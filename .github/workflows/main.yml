@@ -6,10 +6,11 @@ jobs:
     runs-on: self-hosted
     steps:
       - run: |
-          curl https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.15.16.tar.xz | tar -xJ
+          tar -xf /mnt/wrk_files/kernel/5.15.16/linux-5.15.16.tar.xz
           cd linux-5.15.16
           cp /mnt/wrk_files/kernel/5.15.16/config/active .config
           make -j8
+          make -j8 modules
       
       
       
