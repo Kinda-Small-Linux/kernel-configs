@@ -10,7 +10,6 @@ jobs:
           cd linux-5.15.16
           cp /mnt/wrk_files/kernel/5.15.16/config/active .config
           make -j8
-          make -j8 modules
       
       
       
